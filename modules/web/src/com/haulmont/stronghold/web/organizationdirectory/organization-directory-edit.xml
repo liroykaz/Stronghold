@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.stronghold.web.organizationdirectory.OrganizationDirectoryEdit"
+        datasource="organizationDirectoryDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.haulmont.stronghold.web.organizationdirectory">
+    <dsContext>
+        <datasource id="organizationDirectoryDs"
+                    class="com.haulmont.stronghold.entity.OrganizationDirectory"
+                    view="organizationDirectory-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="organizationDirectoryDs">
+            <column width="250px">
+                <field property="orgName"/>
+                <field property="orgAddress"/>
+                <field property="orgEmail"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.stronghold.web.materialsmap.MaterialsMapEdit"
+        datasource="materialsMapDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.haulmont.stronghold.web.materialsmap">
+    <dsContext>
+        <datasource id="materialsMapDs"
+                    class="com.haulmont.stronghold.entity.MaterialsMap"
+                    view="materialsMap-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="materialsMapDs">
+            <column width="250px">
+                <field property="mapKey"/>
+                <field property="material"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

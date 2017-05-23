@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.stronghold.web.subject.SubjectEdit"
+        datasource="subjectDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.haulmont.stronghold.web.subject">
+    <dsContext>
+        <datasource id="subjectDs"
+                    class="com.haulmont.stronghold.entity.Subject"
+                    view="subject-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="subjectDs">
+            <column width="250px">
+                <field property="name"/>
+                <field property="author"/>
+                <field property="teacher"/>
+                <field property="materialsMap"/>
+                <field property="course"/>
+            </column>
+        </fieldGroup>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

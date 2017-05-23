@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<screen-config xmlns="http://schemas.haulmont.com/cuba/screens.xsd">
+    <include file="com/haulmont/stronghold/screens.xml"/>
+    <screen id="stronghold$Student.browse"
+            template="com/haulmont/stronghold/web/student/student-browse.xml"/>
+    <screen id="stronghold$Student.edit"
+            template="com/haulmont/stronghold/web/student/student-edit.xml"/>
+    <screen id="stronghold$Subject.browse"
+            template="com/haulmont/stronghold/web/subject/subject-browse.xml"/>
+    <screen id="stronghold$Subject.edit"
+            template="com/haulmont/stronghold/web/subject/subject-edit.xml"/>
+    <screen id="stronghold$Material.browse"
+            template="com/haulmont/stronghold/web/material/material-browse.xml"/>
+    <screen id="stronghold$Material.edit"
+            template="com/haulmont/stronghold/web/material/material-edit.xml"/>
+    <screen id="stronghold$Course.browse"
+            template="com/haulmont/stronghold/web/course/course-browse.xml"/>
+    <screen id="stronghold$Course.edit"
+            template="com/haulmont/stronghold/web/course/course-edit.xml"/>
+    <screen id="stronghold$PositionDirectory.browse"
+            template="com/haulmont/stronghold/web/positiondirectory/position-directory-browse.xml"/>
+    <screen id="stronghold$PositionDirectory.edit"
+            template="com/haulmont/stronghold/web/positiondirectory/position-directory-edit.xml"/>
+    <screen id="stronghold$ProjectDirectory.browse"
+            template="com/haulmont/stronghold/web/projectdirectory/project-directory-browse.xml"/>
+    <screen id="stronghold$ProjectDirectory.edit"
+            template="com/haulmont/stronghold/web/projectdirectory/project-directory-edit.xml"/>
+    <screen id="stronghold$OrganizationDirectory.browse"
+            template="com/haulmont/stronghold/web/organizationdirectory/organization-directory-browse.xml"/>
+    <screen id="stronghold$OrganizationDirectory.edit"
+            template="com/haulmont/stronghold/web/organizationdirectory/organization-directory-edit.xml"/>
+    <screen id="stronghold$MaterialsMap.browse"
+            template="com/haulmont/stronghold/web/materialsmap/materials-map-browse.xml"/>
+    <screen id="stronghold$MaterialsMap.edit"
+            template="com/haulmont/stronghold/web/materialsmap/materials-map-edit.xml"/>
+</screen-config>

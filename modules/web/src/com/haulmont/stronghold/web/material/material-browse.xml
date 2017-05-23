@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.haulmont.stronghold.web.material.MaterialBrowse"
+        focusComponent="materialsTable"
+        lookupComponent="materialsTable"
+        messagesPack="com.haulmont.stronghold.web.material">
+    <dsContext>
+        <groupDatasource id="materialsDs"
+                         class="com.haulmont.stronghold.entity.Material"
+                         view="material-view">
+            <query>
+                <![CDATA[select e from stronghold$Material e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="materialsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="materialsTable"
+                datasource="materialsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="materialsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="typeMaterial"/>
+                <column id="duration"/>
+            </columns>
+            <rows datasource="materialsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="materialsTable.create"/>
+                <button id="editBtn"
+                        action="materialsTable.edit"/>
+                <button id="removeBtn"
+                        action="materialsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

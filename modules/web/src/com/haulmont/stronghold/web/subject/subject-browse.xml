@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.haulmont.stronghold.web.subject.SubjectBrowse"
+        focusComponent="subjectsTable"
+        lookupComponent="subjectsTable"
+        messagesPack="com.haulmont.stronghold.web.subject">
+    <dsContext>
+        <groupDatasource id="subjectsDs"
+                         class="com.haulmont.stronghold.entity.Subject"
+                         view="subject-view">
+            <query>
+                <![CDATA[select e from stronghold$Subject e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="subjectsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="subjectsTable"
+                datasource="subjectsDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="subjectsTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="author"/>
+                <column id="teacher"/>
+                <column id="materialsMap"/>
+                <column id="course"/>
+            </columns>
+            <rows datasource="subjectsDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="subjectsTable.create"/>
+                <button id="editBtn"
+                        action="subjectsTable.edit"/>
+                <button id="removeBtn"
+                        action="subjectsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>

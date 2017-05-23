@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://editorCaption"
+        class="com.haulmont.stronghold.web.material.MaterialEdit"
+        datasource="materialDs"
+        focusComponent="fieldGroup"
+        messagesPack="com.haulmont.stronghold.web.material">
+    <dsContext>
+        <datasource id="materialDs"
+                    class="com.haulmont.stronghold.entity.Material"
+                    view="material-view"/>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="windowActions"
+            spacing="true">
+        <fieldGroup id="fieldGroup"
+                    datasource="materialDs"
+                    height="72px">
+            <column width="250px">
+                <field property="typeMaterial"/>
+                <field property="duration"/>
+            </column>
+        </fieldGroup>
+        <flowBox datasource="materialDs"
+                 spacing="true">
+            <multiUpload id="multiUploadField"/>
+            <button id="clearImageBtn"
+                    caption="Clear"
+                    invoke="onClearImageBtnClick"/>
+            <button id="downloadImageBtn"
+                    caption="Download"
+                    invoke="onDownloadImageBtnClick"/>
+        </flowBox>
+        <frame id="windowActions"
+               screen="editWindowActions"/>
+    </layout>
+</window>

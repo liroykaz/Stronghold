@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             version="2.0">
+    <persistence-unit name="Stronghold"
+                      transaction-type="RESOURCE_LOCAL">
+        <class>com.haulmont.stronghold.entity.Student</class>
+        <class>com.haulmont.stronghold.entity.Subject</class>
+        <class>com.haulmont.stronghold.entity.Material</class>
+        <class>com.haulmont.stronghold.entity.Course</class>
+        <class>com.haulmont.stronghold.entity.PositionDirectory</class>
+        <class>com.haulmont.stronghold.entity.ProjectDirectory</class>
+        <class>com.haulmont.stronghold.entity.OrganizationDirectory</class>
+        <class>com.haulmont.stronghold.entity.MaterialsMap</class>
+    </persistence-unit>
+</persistence>

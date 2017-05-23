@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+    <view class="com.haulmont.stronghold.entity.Student"
+          name="student-view">
+        <property name="name"/>
+        <property name="surname"/>
+        <property name="patronymic"/>
+        <property name="email"/>
+        <property name="skype"/>
+        <property name="position"
+                  view="_minimal"/>
+        <property name="project"
+                  view="_minimal"/>
+        <property name="organization"
+                  view="_minimal"/>
+        <property name="user"
+                  view="_minimal"/>
+    </view>
+    <view class="com.haulmont.stronghold.entity.Subject"
+          extends="_local"
+          name="subject-view">
+        <property name="author"
+                  view="_minimal"/>
+        <property name="teacher"
+                  view="_minimal"/>
+        <property name="materialsMap"
+                  view="_minimal"/>
+        <property name="course"
+                  view="_minimal"/>
+    </view>
+    <view class="com.haulmont.stronghold.entity.Course"
+          extends="_local"
+          name="course-view">
+        <property name="subject"
+                  view="_minimal"/>
+        <property name="students"
+                  view="_minimal"/>
+    </view>
+    <view class="com.haulmont.stronghold.entity.Material"
+          extends="_local"
+          name="material-view">
+        <property name="attachment"
+                  view="_minimal"/>
+    </view>
+    <view class="com.haulmont.stronghold.entity.MaterialsMap"
+          extends="_local"
+          name="materialsMap-view">
+        <property name="material"
+                  view="_minimal"/>
+    </view>
+    <view class="com.haulmont.stronghold.entity.OrganizationDirectory"
+          extends="_local"
+          name="organizationDirectory-view"/>
+    <view class="com.haulmont.stronghold.entity.PositionDirectory"
+          extends="_local"
+          name="positionDirectory-view"/>
+    <view class="com.haulmont.stronghold.entity.ProjectDirectory"
+          extends="_local"
+          name="projectDirectory-view"/>
+</views>

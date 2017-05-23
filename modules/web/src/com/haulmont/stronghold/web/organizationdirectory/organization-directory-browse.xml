@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.haulmont.stronghold.web.organizationdirectory.OrganizationDirectoryBrowse"
+        focusComponent="organizationDirectoriesTable"
+        lookupComponent="organizationDirectoriesTable"
+        messagesPack="com.haulmont.stronghold.web.organizationdirectory">
+    <dsContext>
+        <groupDatasource id="organizationDirectoriesDs"
+                         class="com.haulmont.stronghold.entity.OrganizationDirectory"
+                         view="organizationDirectory-view">
+            <query>
+                <![CDATA[select e from stronghold$OrganizationDirectory e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="organizationDirectoriesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="organizationDirectoriesTable"
+                datasource="organizationDirectoriesDs">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="organizationDirectoriesTable"
+                    width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="orgName"/>
+                <column id="orgAddress"/>
+                <column id="orgEmail"/>
+            </columns>
+            <rows datasource="organizationDirectoriesDs"/>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn"
+                        action="organizationDirectoriesTable.create"/>
+                <button id="editBtn"
+                        action="organizationDirectoriesTable.edit"/>
+                <button id="removeBtn"
+                        action="organizationDirectoriesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+    </layout>
+</window>
