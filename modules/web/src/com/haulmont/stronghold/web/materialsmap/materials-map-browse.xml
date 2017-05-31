@@ -12,6 +12,8 @@
             <query>
                 <![CDATA[select e from stronghold$MaterialsMap e]]>
             </query>
+            <datasource id="materialsDs"
+                        property="material"/>
         </groupDatasource>
     </dsContext>
     <dialogMode height="600"
@@ -31,8 +33,10 @@
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="mapKey"/>
-                <column id="material"/>
+                <column id="mapKey"
+                        caption="msg://Map key"/>
+                <column id="material"
+                        caption="msg://Material"/>
             </columns>
             <rows datasource="materialsMapsDs"/>
             <rowsCount/>

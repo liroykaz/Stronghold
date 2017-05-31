@@ -9,10 +9,6 @@
             template="com/haulmont/stronghold/web/subject/subject-browse.xml"/>
     <screen id="stronghold$Subject.edit"
             template="com/haulmont/stronghold/web/subject/subject-edit.xml"/>
-    <screen id="stronghold$Material.browse"
-            template="com/haulmont/stronghold/web/material/material-browse.xml"/>
-    <screen id="stronghold$Material.edit"
-            template="com/haulmont/stronghold/web/material/material-edit.xml"/>
     <screen id="stronghold$Course.browse"
             template="com/haulmont/stronghold/web/course/course-browse.xml"/>
     <screen id="stronghold$Course.edit"
@@ -33,4 +29,12 @@
             template="com/haulmont/stronghold/web/materialsmap/materials-map-browse.xml"/>
     <screen id="stronghold$MaterialsMap.edit"
             template="com/haulmont/stronghold/web/materialsmap/materials-map-edit.xml"/>
+    <screen id="stronghold$Attachment.browse"
+            template="com/haulmont/stronghold/web/attachment/attachment-browse.xml"/>
+    <screen id="stronghold$Attachment.edit"
+            template="com/haulmont/stronghold/web/attachment/attachment-edit.xml"/>
+    <screen id="stronghold$Material.browse"
+            template="com/haulmont/stronghold/web/material/material-browse.xml"/>
+    <screen id="stronghold$Material.edit"
+            template="com/haulmont/stronghold/web/material/material-edit.xml"/>
 </screen-config>

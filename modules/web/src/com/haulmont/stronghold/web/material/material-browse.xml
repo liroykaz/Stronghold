@@ -31,8 +31,12 @@
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="typeMaterial"/>
-                <column id="duration"/>
+                <column id="typeMaterial"
+                        caption="msg://Material type"/>
+                <column id="duration"
+                        caption="msg://Duration"/>
+                <column id="attachment"
+                        caption="msg://Attachment"/>
             </columns>
             <rows datasource="materialsDs"/>
             <rowsCount/>

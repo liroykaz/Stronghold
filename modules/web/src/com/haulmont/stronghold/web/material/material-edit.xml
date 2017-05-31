@@ -8,30 +8,55 @@
     <dsContext>
         <datasource id="materialDs"
                     class="com.haulmont.stronghold.entity.Material"
-                    view="material-view"/>
+                    view="material-view">
+            <collectionDatasource id="attachmentDs"
+                                  property="attachment"/>
+        </datasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="windowActions"
             spacing="true">
         <fieldGroup id="fieldGroup"
-                    datasource="materialDs"
-                    height="72px">
+                    datasource="materialDs">
             <column width="250px">
-                <field property="typeMaterial"/>
-                <field property="duration"/>
+                <field caption="msg://Material type"
+                       property="typeMaterial"/>
+                <field caption="msg://Duration"
+                       property="duration"/>
             </column>
         </fieldGroup>
-        <flowBox datasource="materialDs"
-                 spacing="true">
-            <multiUpload id="multiUploadField"/>
-            <button id="clearImageBtn"
-                    caption="Clear"
-                    invoke="onClearImageBtnClick"/>
-            <button id="downloadImageBtn"
-                    caption="Download"
-                    invoke="onDownloadImageBtnClick"/>
-        </flowBox>
+        <groupBox id="attachmentBox"
+                  caption="msg://Work with attachments"
+                  spacing="true">
+            <buttonsPanel>
+                <button action="dataGrid.add"/>
+                <multiUpload id="multiUploadField"
+                             caption="msg://Multi add"/>
+                <button action="dataGrid.remove"/>
+                <button id="buttonDownload"
+                        caption="msg://Download"
+                        invoke="onButtonDownloadClick"
+                        visible="false"/>
+            </buttonsPanel>
+            <dataGrid id="dataGrid"
+                      datasource="attachmentDs"
+                      height="200px"
+                      width="100%">
+                <actions>
+                    <action id="create"/>
+                    <action id="edit"/>
+                    <action id="remove"/>
+                    <action id="add"/>
+                </actions>
+                <columns>
+                    <column id="attachment"
+                            caption="msg://Attachment"
+                            editable="false"
+                            property="attachment"/>
+                </columns>
+            </dataGrid>
+        </groupBox>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

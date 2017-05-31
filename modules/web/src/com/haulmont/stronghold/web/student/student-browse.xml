@@ -31,15 +31,22 @@
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="name"/>
-                <column id="surname"/>
-                <column id="patronymic"/>
+                <column id="name"
+                        caption="msg://Name"/>
+                <column id="surname"
+                        caption="msg://Surname"/>
+                <column id="patronymic"
+                        caption="msg://Patronymic"/>
                 <column id="email"/>
                 <column id="skype"/>
-                <column id="position"/>
-                <column id="project"/>
-                <column id="organization"/>
-                <column id="user"/>
+                <column id="position"
+                        caption="msg://Position"/>
+                <column id="project"
+                        caption="msg://Project"/>
+                <column id="organization"
+                        caption="msg://Organization"/>
+                <column id="user"
+                        caption="msg://User"/>
             </columns>
             <rows datasource="studentsDs"/>
             <rowsCount/>

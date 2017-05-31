@@ -1,0 +1,1 @@
+drop table stronghold_attachment_file_descriptor_link cascade ;

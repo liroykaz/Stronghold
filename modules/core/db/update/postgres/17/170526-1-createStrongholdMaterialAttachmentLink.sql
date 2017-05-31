@@ -1,0 +1,5 @@
+create table STRONGHOLD_MATERIAL_ATTACHMENT_LINK (
+    ATTACHMENT_ID uuid,
+    MATERIAL_ID uuid,
+    primary key (ATTACHMENT_ID, MATERIAL_ID)
+);

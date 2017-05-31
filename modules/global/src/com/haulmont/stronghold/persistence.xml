@@ -11,5 +11,6 @@
         <class>com.haulmont.stronghold.entity.ProjectDirectory</class>
         <class>com.haulmont.stronghold.entity.OrganizationDirectory</class>
         <class>com.haulmont.stronghold.entity.MaterialsMap</class>
+        <class>com.haulmont.stronghold.entity.Attachment</class>
     </persistence-unit>
 </persistence>

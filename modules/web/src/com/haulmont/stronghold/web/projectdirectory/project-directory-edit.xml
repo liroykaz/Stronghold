@@ -17,7 +17,8 @@
         <fieldGroup id="fieldGroup"
                     datasource="projectDirectoryDs">
             <column width="250px">
-                <field property="projectName"/>
+                <field caption="msg://Project name"
+                       property="projectName"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

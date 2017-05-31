@@ -31,11 +31,14 @@
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="name"/>
-                <column id="author"/>
-                <column id="teacher"/>
-                <column id="materialsMap"/>
-                <column id="course"/>
+                <column id="name"
+                        caption="msg://Name"/>
+                <column id="author"
+                        caption="msg://Author"/>
+                <column id="teacher"
+                        caption="msg://Teacher"/>
+                <column id="materialsMap"
+                        caption="msg://Materials map"/>
             </columns>
             <rows datasource="subjectsDs"/>
             <rowsCount/>

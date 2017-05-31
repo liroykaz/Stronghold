@@ -15,44 +15,47 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 import java.util.List;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import java.util.Collection;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Table(name = "STRONGHOLD_MATERIAL")
-@NamePattern("%s %s|typeMaterial,duration")
+@NamePattern(" %s %s|duration,typeMaterial")
 @Entity(name = "stronghold$Material")
 public class Material extends StandardEntity {
     private static final long serialVersionUID = -3251616188954541293L;
 
-    @Column(name = "TYPE_MATERIAL")
-    protected Integer typeMaterial;
-
     @Column(name = "DURATION")
     protected Integer duration;
 
-    @JoinTable(name = "STRONGHOLD_MATERIAL_FILE_DESCRIPTOR_LINK",
+    @JoinTable(name = "STRONGHOLD_MATERIAL_ATTACHMENT_LINK",
         joinColumns = @JoinColumn(name = "MATERIAL_ID"),
-        inverseJoinColumns = @JoinColumn(name = "FILE_DESCRIPTOR_ID"))
-    @OnDeleteInverse(DeletePolicy.DENY)
-    @OnDelete(DeletePolicy.CASCADE)
+        inverseJoinColumns = @JoinColumn(name = "ATTACHMENT_ID"))
     @ManyToMany
-    protected List<FileDescriptor> attachment;
-
-    public List<FileDescriptor> getAttachment() {
-        return attachment;
-    }
-
-    public void setAttachment(List<FileDescriptor> attachment) {
-        this.attachment = attachment;
-    }
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @OnDelete(DeletePolicy.CASCADE)
+    protected List<Attachment> attachment;
 
 
-    public NewEnum getTypeMaterial() {
-        return typeMaterial == null ? null : NewEnum.fromId(typeMaterial);
-    }
+    @Column(name = "TYPE_MATERIAL")
+    protected Integer typeMaterial;
 
-    public void setTypeMaterial(NewEnum typeMaterial) {
+    public void setTypeMaterial(MaterialsTypeEnum typeMaterial) {
         this.typeMaterial = typeMaterial == null ? null : typeMaterial.getId();
     }
 
+    public MaterialsTypeEnum getTypeMaterial() {
+        return typeMaterial == null ? null : MaterialsTypeEnum.fromId(typeMaterial);
+    }
+
+
+    public List<Attachment> getAttachment() {
+        return attachment;
+    }
+
+    public void setAttachment(List<Attachment> attachment) {
+        this.attachment = attachment;
+    }
 
     public Integer getDuration() {
         return duration;
@@ -61,7 +64,4 @@ public class Material extends StandardEntity {
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
-
-
-
 }

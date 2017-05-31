@@ -31,10 +31,14 @@
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="startDate"/>
-                <column id="allDuration"/>
-                <column id="subject"/>
-                <column id="students"/>
+                <column id="startDate"
+                        caption="msg://Start Date"/>
+                <column id="allDuration"
+                        caption="msg://allDuration"/>
+                <column id="subject"
+                        caption="msg://Subject"/>
+                <column id="students"
+                        caption="msg://Student"/>
             </columns>
             <rows datasource="coursesDs"/>
             <rowsCount/>

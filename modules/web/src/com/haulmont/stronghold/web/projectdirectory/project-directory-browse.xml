@@ -31,7 +31,8 @@
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="projectName"/>
+                <column id="projectName"
+                        caption="msg://Project name"/>
             </columns>
             <rows datasource="projectDirectoriesDs"/>
             <rowsCount/>

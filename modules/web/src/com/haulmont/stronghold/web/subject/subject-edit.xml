@@ -17,11 +17,14 @@
         <fieldGroup id="fieldGroup"
                     datasource="subjectDs">
             <column width="250px">
-                <field property="name"/>
-                <field property="author"/>
-                <field property="teacher"/>
-                <field property="materialsMap"/>
-                <field property="course"/>
+                <field caption="msg://Name"
+                       property="name"/>
+                <field caption="msg://Author"
+                       property="author"/>
+                <field caption="msg://Teacher"
+                       property="teacher"/>
+                <field caption="msg://Materials map"
+                       property="materialsMap"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

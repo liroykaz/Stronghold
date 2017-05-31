@@ -17,10 +17,14 @@
         <fieldGroup id="fieldGroup"
                     datasource="courseDs">
             <column width="250px">
-                <field property="startDate"/>
-                <field property="allDuration"/>
-                <field property="subject"/>
-                <field property="students"/>
+                <field caption="msg://Start Date"
+                       property="startDate"/>
+                <field caption="msg://allDuration"
+                       property="allDuration"/>
+                <field caption="msg://Subject"
+                       property="subject"/>
+                <field caption="msg://Student"
+                       property="students"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

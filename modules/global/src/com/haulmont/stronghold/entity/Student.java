@@ -9,6 +9,9 @@ import com.haulmont.cuba.security.entity.User;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.List;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @NamePattern("%s %s|name,surname")
 @Table(name = "STRONGHOLD_STUDENT")
@@ -35,9 +38,11 @@ public class Student extends StandardEntity {
     @JoinColumn(name = "POSITION_ID")
     protected PositionDirectory position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "PROJECT_ID")
-    protected ProjectDirectory project;
+    @JoinTable(name = "STRONGHOLD_STUDENT_PROJECT_DIRECTORY_LINK",
+        joinColumns = @JoinColumn(name = "STUDENT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "PROJECT_DIRECTORY_ID"))
+    @ManyToMany
+    protected List<ProjectDirectory> project;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ORGANIZATION_ID")
@@ -47,6 +52,15 @@ public class Student extends StandardEntity {
     @JoinColumn(name = "USER_ID", unique = true)
     protected User user;
 
+    public List<ProjectDirectory> getProject() {
+        return project;
+    }
+
+    public void setProject(List<ProjectDirectory> project) {
+        this.project = project;
+    }
+
+
     public PositionDirectory getPosition() {
         return position;
     }
@@ -55,14 +69,6 @@ public class Student extends StandardEntity {
         this.position = position;
     }
 
-
-    public ProjectDirectory getProject() {
-        return project;
-    }
-
-    public void setProject(ProjectDirectory project) {
-        this.project = project;
-    }
 
 
     public OrganizationDirectory getOrganization() {

@@ -24,6 +24,7 @@
             <properties include=".*"/>
         </filter>
         <groupTable id="organizationDirectoriesTable"
+                    caption="msg://Organization email"
                     width="100%">
             <actions>
                 <action id="create"/>
@@ -31,9 +32,12 @@
                 <action id="remove"/>
             </actions>
             <columns>
-                <column id="orgName"/>
-                <column id="orgAddress"/>
-                <column id="orgEmail"/>
+                <column id="orgName"
+                        caption="msg://Organization name"/>
+                <column id="orgAddress"
+                        caption="msg://Organization address"/>
+                <column id="orgEmail"
+                        caption="msg://Organization email"/>
             </columns>
             <rows datasource="organizationDirectoriesDs"/>
             <rowsCount/>

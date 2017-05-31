@@ -15,7 +15,6 @@ create table STRONGHOLD_STUDENT (
     EMAIL varchar(255),
     SKYPE varchar(255),
     POSITION_ID uuid,
-    PROJECT_ID uuid,
     ORGANIZATION_ID uuid,
     USER_ID uuid,
     --
@@ -53,9 +52,8 @@ create table STRONGHOLD_MATERIAL (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    TYPE_MATERIAL integer,
     DURATION integer,
-    ATTACHMENT_ID uuid,
+    TYPE_MATERIAL integer,
     --
     primary key (ID)
 )^
@@ -146,3 +144,35 @@ create table STRONGHOLD_MATERIALS_MAP (
     primary key (ID)
 )^
 -- end STRONGHOLD_MATERIALS_MAP
+
+-- begin STRONGHOLD_STUDENT_PROJECT_DIRECTORY_LINK
+create table STRONGHOLD_STUDENT_PROJECT_DIRECTORY_LINK (
+    PROJECT_DIRECTORY_ID uuid,
+    STUDENT_ID uuid,
+    primary key (PROJECT_DIRECTORY_ID, STUDENT_ID)
+)^
+-- end STRONGHOLD_STUDENT_PROJECT_DIRECTORY_LINK
+-- begin STRONGHOLD_ATTACHMENT
+create table STRONGHOLD_ATTACHMENT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    ATTACHMENT_ID uuid,
+    --
+    primary key (ID)
+)^
+-- end STRONGHOLD_ATTACHMENT
+
+-- begin STRONGHOLD_MATERIAL_ATTACHMENT_LINK
+create table STRONGHOLD_MATERIAL_ATTACHMENT_LINK (
+    ATTACHMENT_ID uuid,
+    MATERIAL_ID uuid,
+    primary key (ATTACHMENT_ID, MATERIAL_ID)
+)^
+-- end STRONGHOLD_MATERIAL_ATTACHMENT_LINK

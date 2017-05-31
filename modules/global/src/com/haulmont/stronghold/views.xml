@@ -25,8 +25,6 @@
                   view="_minimal"/>
         <property name="materialsMap"
                   view="_minimal"/>
-        <property name="course"
-                  view="_minimal"/>
     </view>
     <view class="com.haulmont.stronghold.entity.Course"
           extends="_local"
@@ -37,16 +35,22 @@
                   view="_minimal"/>
     </view>
     <view class="com.haulmont.stronghold.entity.Material"
-          extends="_local"
           name="material-view">
         <property name="attachment"
-                  view="_minimal"/>
+                  view="_minimal">
+            <property name="attachment">
+                <property name="name"/>
+            </property>
+        </property>
+        <property name="duration"/>
+        <property name="typeMaterial"/>
     </view>
     <view class="com.haulmont.stronghold.entity.MaterialsMap"
-          extends="_local"
           name="materialsMap-view">
         <property name="material"
-                  view="_minimal"/>
+                  view="_minimal">
+        </property>
+        <property name="mapKey"/>
     </view>
     <view class="com.haulmont.stronghold.entity.OrganizationDirectory"
           extends="_local"
@@ -57,4 +61,14 @@
     <view class="com.haulmont.stronghold.entity.ProjectDirectory"
           extends="_local"
           name="projectDirectory-view"/>
+    <view class="com.haulmont.stronghold.entity.Material"
+          extends="material-view"
+          name="material-attachment">
+    </view>
+    <view class="com.haulmont.stronghold.entity.Attachment"
+          name="attachment-view">
+        <property name="attachment"
+                  view="_minimal">
+        </property>
+    </view>
 </views>

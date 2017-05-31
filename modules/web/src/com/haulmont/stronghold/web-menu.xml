@@ -4,8 +4,8 @@
           insertBefore="administration">
         <item screen="stronghold$Student.browse"/>
         <item screen="stronghold$Subject.browse"/>
-        <item screen="stronghold$Material.browse"/>
         <item screen="stronghold$Course.browse"/>
+        <item screen="stronghold$Material.browse"/>
     </menu>
     <menu id="Directory"
           insertBefore="administration">
@@ -13,5 +13,6 @@
         <item screen="stronghold$ProjectDirectory.browse"/>
         <item screen="stronghold$OrganizationDirectory.browse"/>
         <item screen="stronghold$MaterialsMap.browse"/>
+        <item screen="stronghold$Attachment.browse"/>
     </menu>
 </menu-config>

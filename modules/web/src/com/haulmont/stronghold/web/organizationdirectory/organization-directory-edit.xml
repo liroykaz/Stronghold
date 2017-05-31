@@ -17,9 +17,12 @@
         <fieldGroup id="fieldGroup"
                     datasource="organizationDirectoryDs">
             <column width="250px">
-                <field property="orgName"/>
-                <field property="orgAddress"/>
-                <field property="orgEmail"/>
+                <field caption="msg://Organization name"
+                       property="orgName"/>
+                <field caption="msg://Organization address"
+                       property="orgAddress"/>
+                <field caption="msg://Organization email"
+                       property="orgEmail"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

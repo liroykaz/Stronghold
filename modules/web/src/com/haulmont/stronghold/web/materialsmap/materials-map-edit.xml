@@ -17,8 +17,10 @@
         <fieldGroup id="fieldGroup"
                     datasource="materialsMapDs">
             <column width="250px">
-                <field property="mapKey"/>
-                <field property="material"/>
+                <field caption="msg://Map key"
+                       property="mapKey"/>
+                <field caption="msg://Material"
+                       property="material"/>
             </column>
         </fieldGroup>
         <frame id="windowActions"

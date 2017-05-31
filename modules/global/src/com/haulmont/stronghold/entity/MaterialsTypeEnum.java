@@ -5,7 +5,7 @@ import com.haulmont.chile.core.datatypes.impl.EnumClass;
 import javax.annotation.Nullable;
 
 
-public enum NewEnum implements EnumClass<Integer> {
+public enum MaterialsTypeEnum implements EnumClass<Integer> {
 
     lecture(1),
     practice(2),
@@ -15,7 +15,7 @@ public enum NewEnum implements EnumClass<Integer> {
 
     private Integer id;
 
-    NewEnum(Integer value) {
+    MaterialsTypeEnum(Integer value) {
         this.id = value;
     }
 
@@ -24,8 +24,8 @@ public enum NewEnum implements EnumClass<Integer> {
     }
 
     @Nullable
-    public static NewEnum fromId(Integer id) {
-        for (NewEnum at : NewEnum.values()) {
+    public static MaterialsTypeEnum fromId(Integer id) {
+        for (MaterialsTypeEnum at : MaterialsTypeEnum.values()) {
             if (at.getId().equals(id)) {
                 return at;
             }

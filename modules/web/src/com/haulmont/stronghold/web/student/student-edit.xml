@@ -8,7 +8,18 @@
     <dsContext>
         <datasource id="studentDs"
                     class="com.haulmont.stronghold.entity.Student"
-                    view="student-view"/>
+                    view="student-view">
+            <collectionDatasource id="projectDs"
+                                  property="project"/>
+        </datasource>
+        <collectionDatasource id="projectDirectoriesDs"
+                              allowCommit="false"
+                              class="com.haulmont.stronghold.entity.ProjectDirectory"
+                              view="projectDirectory-view">
+            <query>
+                <![CDATA[select e from stronghold$ProjectDirectory e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -17,17 +28,35 @@
         <fieldGroup id="fieldGroup"
                     datasource="studentDs">
             <column width="250px">
-                <field property="name"/>
-                <field property="surname"/>
-                <field property="patronymic"/>
+                <field caption="msg://Name"
+                       property="name"/>
+                <field caption="msg://Surname"
+                       property="surname"/>
+                <field caption="msg://Patronymic"
+                       property="patronymic"/>
                 <field property="email"/>
                 <field property="skype"/>
-                <field property="position"/>
-                <field property="project"/>
-                <field property="organization"/>
-                <field property="user"/>
+                <field caption="msg://Position"
+                       property="position"/>
+                <field caption="msg://Organization"
+                       property="organization"/>
+                <field caption="msg://User"
+                       property="user"/>
             </column>
         </fieldGroup>
+        <tokenList id="projectDirectoriesTokenList"
+                   datasource="projectDs"
+                   height="158px"
+                   width="345px">
+            <addButton caption="Add"
+                       icon="icons/plus-btn.png"/>
+            <clearButton caption="Clear"/>
+            <lookup captionProperty="projectName"
+                    lookup="true"
+                    lookupScreen="stronghold$ProjectDirectory.browse"
+                    multiselect="true"
+                    optionsDatasource="projectDirectoriesDs"/>
+        </tokenList>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>
