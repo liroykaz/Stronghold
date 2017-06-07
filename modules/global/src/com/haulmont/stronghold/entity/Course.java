@@ -11,27 +11,65 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.List;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import java.util.Set;
+import javax.validation.constraints.NotNull;
+import javax.persistence.OneToMany;
+import java.util.Collection;
 
-@NamePattern("%s %s|startDate,allDuration")
+@NamePattern("%s %s %s|startDate,allDuration,endDate")
 @Table(name = "STRONGHOLD_COURSE")
 @Entity(name = "stronghold$Course")
 public class Course extends StandardEntity {
     private static final long serialVersionUID = 2782157117458101464L;
 
+    @NotNull
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "START_DATE")
+    @Column(name = "START_DATE", nullable = false)
     protected Date startDate;
 
-    @Column(name = "ALL_DURATION")
+    @NotNull
+    @Column(name = "ALL_DURATION", nullable = false)
     protected String allDuration;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SUBJECT_ID")
     protected Subject subject;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "STUDENTS_ID")
-    protected Student students;
+    @JoinTable(name = "STRONGHOLD_COURSE_STUDENT_LINK",
+        joinColumns = @JoinColumn(name = "COURSE_ID"),
+        inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
+    @ManyToMany
+    protected Collection<Student> students;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "END_DATE")
+    protected Date endDate;
+
+    public Collection<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Collection<Student> students) {
+        this.students = students;
+    }
+
+
+
+
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+
+
 
     public Subject getSubject() {
         return subject;
@@ -41,14 +79,6 @@ public class Course extends StandardEntity {
         this.subject = subject;
     }
 
-
-    public Student getStudents() {
-        return students;
-    }
-
-    public void setStudents(Student students) {
-        this.students = students;
-    }
 
 
     public void setStartDate(Date startDate) {

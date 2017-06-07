@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import java.util.List;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 @NamePattern("%s %s|name,surname")
 @Table(name = "STRONGHOLD_STUDENT")
@@ -19,10 +20,12 @@ import javax.persistence.ManyToMany;
 public class Student extends StandardEntity {
     private static final long serialVersionUID = -8325619115600022796L;
 
-    @Column(name = "NAME")
+    @NotNull
+    @Column(name = "NAME", nullable = false)
     protected String name;
 
-    @Column(name = "SURNAME")
+    @NotNull
+    @Column(name = "SURNAME", nullable = false)
     protected String surname;
 
     @Column(name = "PATRONYMIC")
@@ -51,6 +54,8 @@ public class Student extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", unique = true)
     protected User user;
+
+
 
     public List<ProjectDirectory> getProject() {
         return project;

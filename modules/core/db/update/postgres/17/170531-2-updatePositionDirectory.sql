@@ -1,0 +1,2 @@
+update STRONGHOLD_POSITION_DIRECTORY set POSITION_NAME = '' where POSITION_NAME is null ;
+alter table STRONGHOLD_POSITION_DIRECTORY alter column POSITION_NAME set not null ;

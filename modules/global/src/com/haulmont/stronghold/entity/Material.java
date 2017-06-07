@@ -48,7 +48,6 @@ public class Material extends StandardEntity {
         return typeMaterial == null ? null : MaterialsTypeEnum.fromId(typeMaterial);
     }
 
-
     public List<Attachment> getAttachment() {
         return attachment;
     }

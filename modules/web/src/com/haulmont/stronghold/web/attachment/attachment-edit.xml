@@ -10,8 +10,8 @@
                     class="com.haulmont.stronghold.entity.Attachment"
                     view="attachment-view"/>
     </dsContext>
-    <dialogMode height="600"
-                width="800"/>
+    <dialogMode height="300"
+                width="400"/>
     <layout expand="windowActions"
             spacing="true">
         <fieldGroup id="fieldGroup"
@@ -21,6 +21,11 @@
                        property="attachment"/>
             </column>
         </fieldGroup>
+        <textArea id="commentTextArea"
+                  caption="msg://Comment"
+                  datasource="attachmentDs"
+                  property="comments"
+                  width="326px"/>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

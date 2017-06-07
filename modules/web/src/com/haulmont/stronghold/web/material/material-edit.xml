@@ -30,10 +30,26 @@
                   caption="msg://Work with attachments"
                   spacing="true">
             <buttonsPanel>
-                <button action="dataGrid.add"/>
+                <popupButton id="popupButton"
+                             caption="msg://Загрузить">
+                    <actions>
+                        <action id="singleUpload"
+                                caption="SingleUpload"
+                                invoke="onSingleUpload"/>
+                        <action id="multiUpload"
+                                caption="MultiUpload"
+                                invoke="onMultiUpload"/>
+                    </actions>
+                </popupButton>
+                <upload id="uploadField"
+                        datasource="attachmentDs"
+                        property="attachment"/>
+                <button id="addButton"
+                        action="dataGrid.edit"/>
                 <multiUpload id="multiUploadField"
                              caption="msg://Multi add"/>
-                <button action="dataGrid.remove"/>
+                <button id="removeButton"
+                        action="dataGrid.remove"/>
                 <button id="buttonDownload"
                         caption="msg://Download"
                         invoke="onButtonDownloadClick"
@@ -54,10 +70,15 @@
                             caption="msg://Attachment"
                             editable="false"
                             property="attachment"/>
+                    <column id="comment"
+                            caption="msg://Comment"
+                            editable="false"
+                            property="comments"/>
                 </columns>
             </dataGrid>
         </groupBox>
         <frame id="windowActions"
+               height="369px"
                screen="editWindowActions"/>
     </layout>
 </window>

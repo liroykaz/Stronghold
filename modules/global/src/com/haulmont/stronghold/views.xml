@@ -32,7 +32,11 @@
         <property name="subject"
                   view="_minimal"/>
         <property name="students"
-                  view="_minimal"/>
+                  view="_minimal">
+            <property name="patronymic"/>
+            <property name="email"/>
+            <property name="skype"/>
+        </property>
     </view>
     <view class="com.haulmont.stronghold.entity.Material"
           name="material-view">
@@ -70,5 +74,6 @@
         <property name="attachment"
                   view="_minimal">
         </property>
+        <property name="comments"/>
     </view>
 </views>

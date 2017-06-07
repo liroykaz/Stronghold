@@ -9,6 +9,10 @@ import com.haulmont.cuba.security.entity.User;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import java.util.List;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 @NamePattern("%s|name")
 @Table(name = "STRONGHOLD_SUBJECT")
@@ -16,7 +20,8 @@ import javax.persistence.ManyToOne;
 public class Subject extends StandardEntity {
     private static final long serialVersionUID = 1676889631617269365L;
 
-    @Column(name = "NAME")
+    @NotNull
+    @Column(name = "NAME", nullable = false)
     protected String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,13 +32,24 @@ public class Subject extends StandardEntity {
     @JoinColumn(name = "TEACHER_ID")
     protected User teacher;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "MATERIALS_MAP_ID")
-    protected MaterialsMap materialsMap;
+    @JoinTable(name = "STRONGHOLD_SUBJECT_MATERIALS_MAP_LINK",
+        joinColumns = @JoinColumn(name = "SUBJECT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "MATERIALS_MAP_ID"))
+    @ManyToMany
+    protected List<MaterialsMap> materialsMap;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "COURSE_ID")
     protected Course course;
+
+    public List<MaterialsMap> getMaterialsMap() {
+        return materialsMap;
+    }
+
+    public void setMaterialsMap(List<MaterialsMap> materialsMap) {
+        this.materialsMap = materialsMap;
+    }
+
 
     public User getAuthor() {
         return author;
@@ -52,14 +68,6 @@ public class Subject extends StandardEntity {
         this.teacher = teacher;
     }
 
-
-    public MaterialsMap getMaterialsMap() {
-        return materialsMap;
-    }
-
-    public void setMaterialsMap(MaterialsMap materialsMap) {
-        this.materialsMap = materialsMap;
-    }
 
 
     public Course getCourse() {

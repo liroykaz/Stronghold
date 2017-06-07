@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.haulmont.stronghold.Popupcommentscreen"
+        messagesPack="com.haulmont.stronghold">
+    <dsContext>
+        <datasource id="materialDs"
+                    class="com.haulmont.stronghold.entity.Material"
+                    loadDynamicAttributes="true"
+                    view="material-view">
+            <collectionDatasource id="newDs"
+                                  property="attachment"/>
+        </datasource>
+        <collectionDatasource id="newDs1"
+                              class="com.haulmont.stronghold.entity.Attachment"
+                              view="attachment-view">
+            <query>
+                <![CDATA[select e from stronghold$Attachment e where e.comments IS NULL]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode closeable="true"
+                height="500"
+                modal="true"
+                width="800"/>
+    <layout>
+        <dataGrid id="newDataGrid"
+                  datasource="newDs"
+                  editorBuffered="false"
+                  editorEnabled="true"
+                  height="212px"
+                  width="100%">
+            <actions>
+                <action id="remove"/>
+                <action id="create"/>
+            </actions>
+            <columns>
+                <column id="comments"
+                        property="comments"/>
+                <column id="attach"
+                        property="attachment"/>
+            </columns>
+        </dataGrid>
+        <table id="table"
+               editable="true"
+               height="229px"
+               visible="false"
+               width="100%">
+            <columns>
+                <column id="comments"
+                        editable="true"/>
+                <column id="attachment"
+                        editable="true"/>
+            </columns>
+            <rows datasource="newDs"/>
+        </table>
+        <buttonsPanel>
+            <button id="removeButton"
+                    action="newDataGrid.remove"
+                    caption="Remove"/>
+            <button id="buttonOk"
+                    caption="msg://caption"
+                    invoke="onButtonOkClick"/>
+        </buttonsPanel>
+    </layout>
+</window>

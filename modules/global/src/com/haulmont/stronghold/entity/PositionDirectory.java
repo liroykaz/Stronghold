@@ -5,6 +5,7 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import javax.validation.constraints.NotNull;
 
 @NamePattern("%s|positionName")
 @Table(name = "STRONGHOLD_POSITION_DIRECTORY")
@@ -12,7 +13,8 @@ import com.haulmont.chile.core.annotations.NamePattern;
 public class PositionDirectory extends StandardEntity {
     private static final long serialVersionUID = -4558026019975136095L;
 
-    @Column(name = "POSITION_NAME")
+    @NotNull
+    @Column(name = "POSITION_NAME", nullable = false)
     protected String positionName;
 
     public void setPositionName(String positionName) {

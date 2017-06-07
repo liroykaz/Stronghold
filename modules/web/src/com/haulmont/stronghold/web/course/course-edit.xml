@@ -8,7 +8,17 @@
     <dsContext>
         <datasource id="courseDs"
                     class="com.haulmont.stronghold.entity.Course"
-                    view="course-view"/>
+                    view="course-view">
+            <collectionDatasource id="studentDs"
+                                  property="students"/>
+        </datasource>
+        <collectionDatasource id="studentListDs"
+                              class="com.haulmont.stronghold.entity.Student"
+                              view="student-view">
+            <query>
+                <![CDATA[select e from stronghold$Student e ]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -17,16 +27,48 @@
         <fieldGroup id="fieldGroup"
                     datasource="courseDs">
             <column width="250px">
-                <field caption="msg://Start Date"
-                       property="startDate"/>
-                <field caption="msg://allDuration"
-                       property="allDuration"/>
-                <field caption="msg://Subject"
-                       property="subject"/>
-                <field caption="msg://Student"
-                       property="students"/>
+                <field property="startDate"/>
+                <field property="allDuration"/>
+                <field property="endDate"/>
             </column>
         </fieldGroup>
+        <buttonsPanel>
+            <button id="buttonAdd"
+                    action="studentTable.add"
+                    caption="Add"/>
+            <button id="buttonRemove"
+                    action="studentTable.remove"
+                    caption="Remove"/>
+        </buttonsPanel>
+        <table id="studentTable"
+               height="213px"
+               width="662px">
+            <actions>
+                <action id="add"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="surname"/>
+                <column id="patronymic"/>
+                <column id="email"/>
+                <column id="skype"/>
+            </columns>
+            <rows datasource="studentDs"/>
+        </table>
+        <tokenList id="studentTokenList"
+                   caption="msg://Student list"
+                   datasource="studentDs"
+                   height="178px"
+                   visible="false"
+                   width="340px">
+            <addButton icon="icons/add.png"/>
+            <lookup lookup="true"
+                    lookupScreen="stronghold$Student.browse"
+                    multiselect="true"
+                    openType="NEW_TAB"
+                    optionsDatasource="studentListDs"/>
+        </tokenList>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        class="com.haulmont.stronghold.web.material.ExtAppMainWindow"
+        extends="/com/haulmont/cuba/web/app/mainwindow/mainwindow.xml"
+        messagesPack="com.haulmont.stronghold.web.material"
+        xmlns:main="http://schemas.haulmont.com/cuba/mainwindow.xsd">
+    <dsContext>
+        <collectionDatasource id="coursesDs"
+                              class="com.haulmont.stronghold.entity.Course"
+                              view="course-view">
+            <query>
+                <![CDATA[select e from stronghold$Course e where e.endDate IS NULL]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <split id="foldersSplit">
+            <main:workArea id="workArea">
+                <main:initialLayout>
+                    <table id="table"
+                           height="285px"
+                           width="100%">
+                        <columns>
+                            <column id="startDate"
+                                    caption="msg://Start date"/>
+                            <column id="endDate"
+                                    caption="msg://End date"/>
+                            <column id="allDuration"
+                                    caption="msg://Duration"/>
+                            <column id="subject"
+                                    caption="msg://Subject"/>
+                        </columns>
+                        <rows datasource="coursesDs"/>
+                    </table>
+                </main:initialLayout>
+            </main:workArea>
+        </split>
+    </layout>
+</window>

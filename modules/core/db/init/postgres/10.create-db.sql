@@ -9,8 +9,8 @@ create table STRONGHOLD_STUDENT (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    NAME varchar(255),
-    SURNAME varchar(255),
+    NAME varchar(255) not null,
+    SURNAME varchar(255) not null,
     PATRONYMIC varchar(255),
     EMAIL varchar(255),
     SKYPE varchar(255),
@@ -32,10 +32,9 @@ create table STRONGHOLD_SUBJECT (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    NAME varchar(255),
+    NAME varchar(255) not null,
     AUTHOR_ID uuid,
     TEACHER_ID uuid,
-    MATERIALS_MAP_ID uuid,
     COURSE_ID uuid,
     --
     primary key (ID)
@@ -69,10 +68,10 @@ create table STRONGHOLD_COURSE (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    START_DATE timestamp,
-    ALL_DURATION varchar(255),
+    START_DATE timestamp not null,
+    ALL_DURATION varchar(255) not null,
     SUBJECT_ID uuid,
-    STUDENTS_ID uuid,
+    END_DATE date,
     --
     primary key (ID)
 )^
@@ -88,7 +87,7 @@ create table STRONGHOLD_POSITION_DIRECTORY (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    POSITION_NAME varchar(255),
+    POSITION_NAME varchar(255) not null,
     --
     primary key (ID)
 )^
@@ -104,7 +103,7 @@ create table STRONGHOLD_PROJECT_DIRECTORY (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PROJECT_NAME varchar(255),
+    PROJECT_NAME varchar(255) not null,
     --
     primary key (ID)
 )^
@@ -120,7 +119,7 @@ create table STRONGHOLD_ORGANIZATION_DIRECTORY (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    ORG_NAME varchar(255),
+    ORG_NAME varchar(255) not null,
     ORG_ADDRESS varchar(255),
     ORG_EMAIL varchar(255),
     --
@@ -164,6 +163,7 @@ create table STRONGHOLD_ATTACHMENT (
     DELETED_BY varchar(50),
     --
     ATTACHMENT_ID uuid,
+    COMMENTS varchar(255) not null,
     --
     primary key (ID)
 )^
@@ -176,3 +176,18 @@ create table STRONGHOLD_MATERIAL_ATTACHMENT_LINK (
     primary key (ATTACHMENT_ID, MATERIAL_ID)
 )^
 -- end STRONGHOLD_MATERIAL_ATTACHMENT_LINK
+
+-- begin STRONGHOLD_SUBJECT_MATERIALS_MAP_LINK
+create table STRONGHOLD_SUBJECT_MATERIALS_MAP_LINK (
+    MATERIALS_MAP_ID uuid,
+    SUBJECT_ID uuid,
+    primary key (MATERIALS_MAP_ID, SUBJECT_ID)
+)^
+-- end STRONGHOLD_SUBJECT_MATERIALS_MAP_LINK
+-- begin STRONGHOLD_COURSE_STUDENT_LINK
+create table STRONGHOLD_COURSE_STUDENT_LINK (
+    COURSE_ID uuid,
+    STUDENT_ID uuid,
+    primary key (COURSE_ID, STUDENT_ID)
+)^
+-- end STRONGHOLD_COURSE_STUDENT_LINK

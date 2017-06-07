@@ -8,7 +8,17 @@
     <dsContext>
         <datasource id="subjectDs"
                     class="com.haulmont.stronghold.entity.Subject"
-                    view="subject-view"/>
+                    view="subject-view">
+            <collectionDatasource id="materialsMapDs"
+                                  property="materialsMap"/>
+        </datasource>
+        <collectionDatasource id="materialMapListDs"
+                              class="com.haulmont.stronghold.entity.MaterialsMap"
+                              view="materialsMap-view">
+            <query>
+                <![CDATA[select e from stronghold$MaterialsMap e]]>
+            </query>
+        </collectionDatasource>
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
@@ -23,10 +33,18 @@
                        property="author"/>
                 <field caption="msg://Teacher"
                        property="teacher"/>
-                <field caption="msg://Materials map"
-                       property="materialsMap"/>
             </column>
         </fieldGroup>
+        <tokenList id="tokenList"
+                   caption="msg://Materials map"
+                   datasource="materialsMapDs"
+                   height="163px"
+                   width="315px">
+            <lookup lookup="true"
+                    lookupScreen="stronghold$MaterialsMap.browse"
+                    multiselect="true"
+                    optionsDatasource="materialMapListDs"/>
+        </tokenList>
         <frame id="windowActions"
                screen="editWindowActions"/>
     </layout>

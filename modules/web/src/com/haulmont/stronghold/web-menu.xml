@@ -13,6 +13,5 @@
         <item screen="stronghold$ProjectDirectory.browse"/>
         <item screen="stronghold$OrganizationDirectory.browse"/>
         <item screen="stronghold$MaterialsMap.browse"/>
-        <item screen="stronghold$Attachment.browse"/>
     </menu>
 </menu-config>

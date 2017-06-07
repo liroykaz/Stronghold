@@ -1,0 +1,5 @@
+create table STRONGHOLD_SUBJECT_MATERIALS_MAP_LINK (
+    MATERIALS_MAP_ID uuid,
+    SUBJECT_ID uuid,
+    primary key (MATERIALS_MAP_ID, SUBJECT_ID)
+);

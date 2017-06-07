@@ -39,6 +39,7 @@
                         caption="msg://Subject"/>
                 <column id="students"
                         caption="msg://Student"/>
+                <column id="endDate"/>
             </columns>
             <rows datasource="coursesDs"/>
             <rowsCount/>

@@ -5,6 +5,7 @@ import javax.persistence.Table;
 import javax.persistence.Column;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.chile.core.annotations.NamePattern;
+import javax.validation.constraints.NotNull;
 
 @NamePattern("%s %s %s|orgEmail,orgName,orgAddress")
 @Table(name = "STRONGHOLD_ORGANIZATION_DIRECTORY")
@@ -12,7 +13,8 @@ import com.haulmont.chile.core.annotations.NamePattern;
 public class OrganizationDirectory extends StandardEntity {
     private static final long serialVersionUID = -2800072698846168127L;
 
-    @Column(name = "ORG_NAME")
+    @NotNull
+    @Column(name = "ORG_NAME", nullable = false)
     protected String orgName;
 
     @Column(name = "ORG_ADDRESS")

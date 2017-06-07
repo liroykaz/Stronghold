@@ -45,6 +45,7 @@
             </column>
         </fieldGroup>
         <tokenList id="projectDirectoriesTokenList"
+                   caption="msg://Projects"
                    datasource="projectDs"
                    height="158px"
                    width="345px">

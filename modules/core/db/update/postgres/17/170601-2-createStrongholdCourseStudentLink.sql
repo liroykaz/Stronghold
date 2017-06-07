@@ -1,0 +1,2 @@
+alter table STRONGHOLD_COURSE_STUDENT_LINK add constraint FK_SCSL_COURSE foreign key (COURSE_ID) references STRONGHOLD_COURSE(ID);
+alter table STRONGHOLD_COURSE_STUDENT_LINK add constraint FK_SCSL_STUDENT foreign key (STUDENT_ID) references STRONGHOLD_STUDENT(ID);

@@ -14,8 +14,10 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import javax.persistence.OneToOne;
 import java.util.Collection;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.validation.constraints.NotNull;
 
-@NamePattern("%s|attachment")
+@NamePattern("%s %s|attachment,comments")
 @Table(name = "STRONGHOLD_ATTACHMENT")
 @Entity(name = "stronghold$Attachment")
 public class Attachment extends StandardEntity {
@@ -30,6 +32,20 @@ public class Attachment extends StandardEntity {
         inverseJoinColumns = @JoinColumn(name = "MATERIAL_ID"))
     @ManyToMany
     protected List<Material> materials;
+
+
+    @NotNull
+    @Column(name = "COMMENTS", nullable = false)
+    protected String comments;
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
 
     public void setMaterials(List<Material> materials) {
         this.materials = materials;

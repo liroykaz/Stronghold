@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.validation.constraints.NotNull;
 
 @NamePattern("%s|projectName")
 @Table(name = "STRONGHOLD_PROJECT_DIRECTORY")
@@ -16,7 +17,8 @@ import javax.persistence.ManyToMany;
 public class ProjectDirectory extends StandardEntity {
     private static final long serialVersionUID = 1209381733388025237L;
 
-    @Column(name = "PROJECT_NAME")
+    @NotNull
+    @Column(name = "PROJECT_NAME", nullable = false)
     protected String projectName;
 
     @JoinTable(name = "STRONGHOLD_STUDENT_PROJECT_DIRECTORY_LINK",
