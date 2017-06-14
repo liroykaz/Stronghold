@@ -11,6 +11,8 @@
                     view="course-view">
             <collectionDatasource id="studentDs"
                                   property="students"/>
+            <collectionDatasource id="subjectDs"
+                                  property="subject"/>
         </datasource>
         <collectionDatasource id="studentListDs"
                               class="com.haulmont.stronghold.entity.Student"
@@ -22,40 +24,75 @@
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="windowActions"
+    <layout expand="grid"
             spacing="true">
         <fieldGroup id="fieldGroup"
                     datasource="courseDs">
             <column width="250px">
-                <field property="startDate"/>
-                <field property="allDuration"/>
-                <field property="endDate"/>
+                <field caption="msg://Start Date"
+                       property="startDate"/>
+                <field caption="msg://allDuration"
+                       property="allDuration"/>
+                <field caption="msg://End date"
+                       property="endDate"/>
             </column>
         </fieldGroup>
-        <buttonsPanel>
-            <button id="buttonAdd"
-                    action="studentTable.add"
-                    caption="Add"/>
-            <button id="buttonRemove"
-                    action="studentTable.remove"
-                    caption="Remove"/>
-        </buttonsPanel>
-        <table id="studentTable"
-               height="213px"
-               width="662px">
-            <actions>
-                <action id="add"/>
-                <action id="remove"/>
-            </actions>
-            <columns>
-                <column id="name"/>
-                <column id="surname"/>
-                <column id="patronymic"/>
-                <column id="email"/>
-                <column id="skype"/>
-            </columns>
-            <rows datasource="studentDs"/>
-        </table>
+        <grid id="grid"
+              spacing="true"
+              width="70%">
+            <columns count="2"/>
+            <rows>
+                <row id="row">
+                    <table id="studentTable"
+                           height="100%"
+                           width="100%">
+                        <actions>
+                            <action id="add"/>
+                            <action id="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="name"
+                                    caption="msg://Name"/>
+                            <column id="surname"/>
+                            <column id="patronymic"/>
+                            <column id="email"/>
+                            <column id="skype"/>
+                        </columns>
+                        <rows datasource="studentDs"/>
+                        <buttonsPanel>
+                            <button id="buttonAdd"
+                                    action="studentTable.add"
+                                    caption="msg://Add"/>
+                            <button id="buttonRemove"
+                                    action="studentTable.remove"
+                                    caption="msg://Remove"/>
+                        </buttonsPanel>
+                    </table>
+                    <table id="subjectTable"
+                           height="100%"
+                           width="100%">
+                        <actions>
+                            <action id="create"/>
+                            <action id="add"/>
+                        </actions>
+                        <columns>
+                            <column id="name"
+                                    caption="msg://Subject name"/>
+                        </columns>
+                        <rows datasource="subjectDs"/>
+                        <buttonsPanel>
+                            <button id="button"
+                                    action="subjectTable.add"
+                                    caption="msg://Add"/>
+                            <button id="button_1"
+                                    action="subjectTable.create"
+                                    caption="msg://Create"/>
+                        </buttonsPanel>
+                    </table>
+                </row>
+                <row/>
+            </rows>
+        </grid>
         <tokenList id="studentTokenList"
                    caption="msg://Student list"
                    datasource="studentDs"
@@ -70,6 +107,7 @@
                     optionsDatasource="studentListDs"/>
         </tokenList>
         <frame id="windowActions"
+               height="37px"
                screen="editWindowActions"/>
     </layout>
 </window>

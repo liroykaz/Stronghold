@@ -57,7 +57,6 @@ public class MaterialEdit extends AbstractEditor {
 
     @Override
     public void init(Map<String, Object> params) {
-        initAttachmentActions(params);
         uploadField.addFileUploadSucceedListener(event -> {
             Attachment attachment = metadata.create(Attachment.class);
             FileDescriptor fd = metadata.create(FileDescriptor.class);
@@ -110,7 +109,7 @@ public class MaterialEdit extends AbstractEditor {
                 showNotification("File upload error", NotificationType.HUMANIZED));
 
         dataGrid.addItemClickListener(event -> {
-            buttonDownload.setVisible(true);
+            buttonDownload.setEnabled(true);
         });
     }
     
@@ -120,26 +119,37 @@ public class MaterialEdit extends AbstractEditor {
         }
     }
 
-    public void initAttachmentActions(Map<String, Object> params){
-        initMultiUploadAction(params);
-    }
-
-    public void initMultiUploadAction(Map<String, Object> params){
-        Action multiUploadAction = attachmentActionTools.createMultiUploadAction(attachmentsTable, this,
-                attachmentCreator, WindowManager.OpenType.DIALOG, params);
-
-
-        popupButton.addAction(multiUploadAction);
-    }
-
-
     public void onSingleUpload(Component source) {
-
+        Attachment attachment = metadata.create(Attachment.class);
+        attachmentDs.addItem(attachment);
+       // Map<String, Object> mapFiles = new HashedMap();
+        //mapFiles.put("map", attachment);
+        openEditor("screenAddSingleAttach", attachment, WindowManager.OpenType.DIALOG);
     }
     
     
 
     public void onMultiUpload(Component source) {
-    
+        Map<String, Object> mapFiles = new HashedMap();
+        //Map<String, Object> mapFiles = metadata.create(HashMap.class);
+        mapFiles.put("map", attachmentDs);
+        openWindow("popupCommentScreen.copy", WindowManager.OpenType.DIALOG, mapFiles);
     }
+
+//    @Override
+//    protected boolean preCommit() {
+////        try{
+////            if(materialDs.getItem().getAttachment() != null) {
+////                for (int i = 0; i < materialDs.getItem().getAttachment().size(); i++) {
+////                    if (materialDs.getItem().getAttachment().get(i).getComments().equals("")) {
+////                        return false;
+////                    }
+////                }
+////            }
+////        } catch (Exception ex){
+////            showNotification("Пожалуйста, проверьте правильность заполнения полей!");
+////        }finally {
+////            return super.preCommit();
+////        }
+//    }
 }

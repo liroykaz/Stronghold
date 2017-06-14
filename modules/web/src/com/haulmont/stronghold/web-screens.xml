@@ -38,5 +38,7 @@
     <screen id="mainWindow"
             template="com/haulmont/stronghold/web/material/ext-mainwindow.xml"/>
     <screen id="popupCommentScreen.copy"
-            template="com/haulmont/stronghold/PopupCommentScreen-copy.xml"/>
+            template="com/haulmont/stronghold/popupCommentScreen-copy.xml"/>
+    <screen id="screenAddSingleAttach"
+            template="com/haulmont/stronghold/screenAddSingleAttach.xml"/>
 </screen-config>

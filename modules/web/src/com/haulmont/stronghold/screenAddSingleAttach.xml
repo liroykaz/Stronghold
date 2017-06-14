@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.haulmont.stronghold.ScreenAddSingleAttach"
+        datasource="attachmentDs"
+        messagesPack="com.haulmont.stronghold">
+    <dsContext>
+        <datasource id="attachmentDs"
+                    allowCommit="false"
+                    class="com.haulmont.stronghold.entity.Attachment"
+                    view="attachment-view"/>
+    </dsContext>
+    <dialogMode height="500"
+                width="800"/>
+    <layout spacing="true">
+        <vbox id="vbox"
+              spacing="true">
+            <fieldGroup id="fieldGroup"
+                        width="100%">
+                <field id="attach"
+                       caption="msg://Attachment"
+                       datasource="attachmentDs"
+                       property="attachment"
+                       required="true"
+                       width="98%"/>
+            </fieldGroup>
+            <textArea id="textArea_1"
+                      datasource="attachmentDs"
+                      height="343px"
+                      property="comments"
+                      required="true"
+                      width="756px"/>
+            <button id="button"
+                    caption="msg://Ok"
+                    invoke="onButtonClick"/>
+        </vbox>
+    </layout>
+</window>

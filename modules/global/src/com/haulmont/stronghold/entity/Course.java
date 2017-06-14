@@ -34,27 +34,41 @@ public class Course extends StandardEntity {
     @Column(name = "ALL_DURATION", nullable = false)
     protected String allDuration;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "SUBJECT_ID")
-    protected Subject subject;
+    @JoinTable(name = "STRONGHOLD_COURSE_SUBJECT_LINK",
+        joinColumns = @JoinColumn(name = "COURSE_ID"),
+        inverseJoinColumns = @JoinColumn(name = "SUBJECT_ID"))
+    @ManyToMany
+    protected List<Subject> subject;
 
     @JoinTable(name = "STRONGHOLD_COURSE_STUDENT_LINK",
         joinColumns = @JoinColumn(name = "COURSE_ID"),
         inverseJoinColumns = @JoinColumn(name = "STUDENT_ID"))
     @ManyToMany
-    protected Collection<Student> students;
+    protected List<Student> students;
 
     @Temporal(TemporalType.DATE)
     @Column(name = "END_DATE")
     protected Date endDate;
 
-    public Collection<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
-    public void setStudents(Collection<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
+
+
+    public List<Subject> getSubject() {
+        return subject;
+    }
+
+    public void setSubject(List<Subject> subject) {
+        this.subject = subject;
+    }
+
+
+
 
 
 
@@ -70,14 +84,6 @@ public class Course extends StandardEntity {
 
 
 
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
 
 
 

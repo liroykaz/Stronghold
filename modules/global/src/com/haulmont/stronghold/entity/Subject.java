@@ -13,6 +13,9 @@ import java.util.List;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 @NamePattern("%s|name")
 @Table(name = "STRONGHOLD_SUBJECT")
@@ -38,9 +41,37 @@ public class Subject extends StandardEntity {
     @ManyToMany
     protected List<MaterialsMap> materialsMap;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "COURSE_ID")
-    protected Course course;
+    @JoinTable(name = "STRONGHOLD_SUBJECT_MATERIAL_LINK",
+        joinColumns = @JoinColumn(name = "SUBJECT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "MATERIAL_ID"))
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    @OnDelete(DeletePolicy.CASCADE)
+    @ManyToMany
+    protected List<Material> material;
+
+    @JoinTable(name = "STRONGHOLD_COURSE_SUBJECT_LINK",
+        joinColumns = @JoinColumn(name = "SUBJECT_ID"),
+        inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
+    @ManyToMany
+    protected List<Course> courses;
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+
+    public void setMaterial(List<Material> material) {
+        this.material = material;
+    }
+
+    public List<Material> getMaterial() {
+        return material;
+    }
+
 
     public List<MaterialsMap> getMaterialsMap() {
         return materialsMap;
@@ -69,14 +100,6 @@ public class Subject extends StandardEntity {
     }
 
 
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
 
 
     public void setName(String name) {

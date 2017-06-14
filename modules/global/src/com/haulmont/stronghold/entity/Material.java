@@ -40,6 +40,21 @@ public class Material extends StandardEntity {
     @Column(name = "TYPE_MATERIAL")
     protected Integer typeMaterial;
 
+    @JoinTable(name = "STRONGHOLD_SUBJECT_MATERIAL_LINK",
+        joinColumns = @JoinColumn(name = "MATERIAL_ID"),
+        inverseJoinColumns = @JoinColumn(name = "SUBJECT_ID"))
+    @ManyToMany
+    protected List<Subject> subjects;
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+
     public void setTypeMaterial(MaterialsTypeEnum typeMaterial) {
         this.typeMaterial = typeMaterial == null ? null : typeMaterial.getId();
     }

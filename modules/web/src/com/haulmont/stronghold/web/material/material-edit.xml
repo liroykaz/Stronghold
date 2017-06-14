@@ -7,6 +7,7 @@
         messagesPack="com.haulmont.stronghold.web.material">
     <dsContext>
         <datasource id="materialDs"
+                    allowCommit="false"
                     class="com.haulmont.stronghold.entity.Material"
                     view="material-view">
             <collectionDatasource id="attachmentDs"
@@ -15,70 +16,83 @@
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="windowActions"
+    <layout expand="dataGrid"
             spacing="true">
-        <fieldGroup id="fieldGroup"
-                    datasource="materialDs">
-            <column width="250px">
-                <field caption="msg://Material type"
-                       property="typeMaterial"/>
-                <field caption="msg://Duration"
-                       property="duration"/>
-            </column>
-        </fieldGroup>
-        <groupBox id="attachmentBox"
-                  caption="msg://Work with attachments"
-                  spacing="true">
-            <buttonsPanel>
-                <popupButton id="popupButton"
-                             caption="msg://Загрузить">
-                    <actions>
-                        <action id="singleUpload"
-                                caption="SingleUpload"
-                                invoke="onSingleUpload"/>
-                        <action id="multiUpload"
-                                caption="MultiUpload"
-                                invoke="onMultiUpload"/>
-                    </actions>
-                </popupButton>
-                <upload id="uploadField"
-                        datasource="attachmentDs"
+        <vbox spacing="true">
+            <fieldGroup id="fieldGroup"
+                        datasource="materialDs"
+                        height="81px">
+                <column width="250px">
+                    <field caption="msg://Material type"
+                           property="typeMaterial"/>
+                    <field caption="msg://Duration"
+                           property="duration"/>
+                </column>
+            </fieldGroup>
+            <groupBox id="attachmentBox"
+                      caption="msg://Work with attachments"
+                      height="69px"
+                      spacing="true"
+                      width="521px">
+                <buttonsPanel id="buttonsPanel"
+                              height="59px"
+                              margin="true,false,false,false"
+                              width="485px">
+                    <upload id="uploadField"
+                            datasource="attachmentDs"
+                            property="attachment"
+                            visible="false"/>
+                    <popupButton id="popupButton"
+                                 caption="msg://Upload"
+                                 width="118px">
+                        <actions>
+                            <action id="singleUpload"
+                                    caption="msg://SingleUpload"
+                                    invoke="onSingleUpload"/>
+                            <action id="multiUpload"
+                                    caption="msg://MultiUpload"
+                                    invoke="onMultiUpload"/>
+                        </actions>
+                    </popupButton>
+                    <button id="addButton"
+                            action="dataGrid.edit"
+                            width="116px"/>
+                    <multiUpload id="multiUploadField"
+                                 caption="msg://Multi add"
+                                 visible="false"/>
+                    <button id="buttonDownload"
+                            caption="msg://Download"
+                            enable="false"
+                            invoke="onButtonDownloadClick"
+                            width="112px"/>
+                    <button id="removeButton"
+                            action="dataGrid.remove"/>
+                </buttonsPanel>
+            </groupBox>
+        </vbox>
+        <dataGrid id="dataGrid"
+                  datasource="attachmentDs"
+                  height="270px"
+                  width="100%">
+            <actions>
+                <action id="create"/>
+                <action id="edit"/>
+                <action id="remove"/>
+                <action id="add"/>
+            </actions>
+            <columns>
+                <column id="attachment"
+                        caption="msg://Attachment"
+                        editable="false"
                         property="attachment"/>
-                <button id="addButton"
-                        action="dataGrid.edit"/>
-                <multiUpload id="multiUploadField"
-                             caption="msg://Multi add"/>
-                <button id="removeButton"
-                        action="dataGrid.remove"/>
-                <button id="buttonDownload"
-                        caption="msg://Download"
-                        invoke="onButtonDownloadClick"
-                        visible="false"/>
-            </buttonsPanel>
-            <dataGrid id="dataGrid"
-                      datasource="attachmentDs"
-                      height="200px"
-                      width="100%">
-                <actions>
-                    <action id="create"/>
-                    <action id="edit"/>
-                    <action id="remove"/>
-                    <action id="add"/>
-                </actions>
-                <columns>
-                    <column id="attachment"
-                            caption="msg://Attachment"
-                            editable="false"
-                            property="attachment"/>
-                    <column id="comment"
-                            caption="msg://Comment"
-                            editable="false"
-                            property="comments"/>
-                </columns>
-            </dataGrid>
-        </groupBox>
+                <column id="comment"
+                        caption="msg://Comment"
+                        editable="false"
+                        property="comments"/>
+            </columns>
+        </dataGrid>
         <frame id="windowActions"
-               height="369px"
+               height="28px"
                screen="editWindowActions"/>
     </layout>
 </window>

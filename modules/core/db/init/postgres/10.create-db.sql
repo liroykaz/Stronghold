@@ -35,7 +35,6 @@ create table STRONGHOLD_SUBJECT (
     NAME varchar(255) not null,
     AUTHOR_ID uuid,
     TEACHER_ID uuid,
-    COURSE_ID uuid,
     --
     primary key (ID)
 )^
@@ -70,7 +69,6 @@ create table STRONGHOLD_COURSE (
     --
     START_DATE timestamp not null,
     ALL_DURATION varchar(255) not null,
-    SUBJECT_ID uuid,
     END_DATE date,
     --
     primary key (ID)
@@ -191,3 +189,17 @@ create table STRONGHOLD_COURSE_STUDENT_LINK (
     primary key (COURSE_ID, STUDENT_ID)
 )^
 -- end STRONGHOLD_COURSE_STUDENT_LINK
+-- begin STRONGHOLD_SUBJECT_MATERIAL_LINK
+create table STRONGHOLD_SUBJECT_MATERIAL_LINK (
+    MATERIAL_ID uuid,
+    SUBJECT_ID uuid,
+    primary key (MATERIAL_ID, SUBJECT_ID)
+)^
+-- end STRONGHOLD_SUBJECT_MATERIAL_LINK
+-- begin STRONGHOLD_COURSE_SUBJECT_LINK
+create table STRONGHOLD_COURSE_SUBJECT_LINK (
+    COURSE_ID uuid,
+    SUBJECT_ID uuid,
+    primary key (COURSE_ID, SUBJECT_ID)
+)^
+-- end STRONGHOLD_COURSE_SUBJECT_LINK

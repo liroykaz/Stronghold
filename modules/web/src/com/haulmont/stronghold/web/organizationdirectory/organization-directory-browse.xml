@@ -24,7 +24,6 @@
             <properties include=".*"/>
         </filter>
         <groupTable id="organizationDirectoriesTable"
-                    caption="msg://Organization email"
                     width="100%">
             <actions>
                 <action id="create"/>

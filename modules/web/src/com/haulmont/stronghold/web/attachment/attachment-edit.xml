@@ -7,6 +7,7 @@
         messagesPack="com.haulmont.stronghold.web.attachment">
     <dsContext>
         <datasource id="attachmentDs"
+                    allowCommit="false"
                     class="com.haulmont.stronghold.entity.Attachment"
                     view="attachment-view"/>
     </dsContext>
@@ -18,13 +19,15 @@
                     datasource="attachmentDs">
             <column width="250px">
                 <field caption="msg://Attachment"
-                       property="attachment"/>
+                       property="attachment"
+                       required="true"/>
             </column>
         </fieldGroup>
         <textArea id="commentTextArea"
                   caption="msg://Comment"
                   datasource="attachmentDs"
                   property="comments"
+                  required="true"
                   width="326px"/>
         <frame id="windowActions"
                screen="editWindowActions"/>

@@ -4,5 +4,8 @@
         <screen module="web"
                 presentSize="400x300"
                 reference="com/haulmont/stronghold/PopupCommentScreen.xml"/>
+        <screen module="web"
+                presentSize="800x500"
+                reference="com/haulmont/stronghold/screenAddSingleAttach.xml"/>
     </screenDesigner>
 </studio>

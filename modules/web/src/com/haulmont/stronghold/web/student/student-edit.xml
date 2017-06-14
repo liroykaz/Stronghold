@@ -23,7 +23,7 @@
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="windowActions"
+    <layout expand="projectDirectoriesTokenList"
             spacing="true">
         <fieldGroup id="fieldGroup"
                     datasource="studentDs">
@@ -47,7 +47,7 @@
         <tokenList id="projectDirectoriesTokenList"
                    caption="msg://Projects"
                    datasource="projectDs"
-                   height="158px"
+                   height="368px"
                    width="345px">
             <addButton caption="Add"
                        icon="icons/plus-btn.png"/>
@@ -59,6 +59,7 @@
                     optionsDatasource="projectDirectoriesDs"/>
         </tokenList>
         <frame id="windowActions"
+               height="41px"
                screen="editWindowActions"/>
     </layout>
 </window>

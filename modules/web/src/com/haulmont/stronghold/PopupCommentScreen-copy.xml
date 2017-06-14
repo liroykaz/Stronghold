@@ -8,7 +8,7 @@
                     class="com.haulmont.stronghold.entity.Material"
                     loadDynamicAttributes="true"
                     view="material-view">
-            <collectionDatasource id="newDs"
+            <collectionDatasource id="attachmentsDs"
                                   property="attachment"/>
         </datasource>
         <collectionDatasource id="newDs1"
@@ -23,9 +23,17 @@
                 height="500"
                 modal="true"
                 width="800"/>
-    <layout>
+    <layout expand="newDataGrid"
+            spacing="true">
+        <buttonsPanel>
+            <multiUpload id="multiUploadField"
+                         caption="msg://Upload"/>
+            <button id="removeButton"
+                    action="newDataGrid.remove"
+                    caption="Remove"/>
+        </buttonsPanel>
         <dataGrid id="newDataGrid"
-                  datasource="newDs"
+                  datasource="attachmentsDs"
                   editorBuffered="false"
                   editorEnabled="true"
                   height="212px"
@@ -35,32 +43,12 @@
                 <action id="create"/>
             </actions>
             <columns>
-                <column id="comments"
-                        property="comments"/>
-                <column id="attach"
-                        property="attachment"/>
+                <column property="attachment"/>
+                <column property="comments"/>
             </columns>
         </dataGrid>
-        <table id="table"
-               editable="true"
-               height="229px"
-               visible="false"
-               width="100%">
-            <columns>
-                <column id="comments"
-                        editable="true"/>
-                <column id="attachment"
-                        editable="true"/>
-            </columns>
-            <rows datasource="newDs"/>
-        </table>
-        <buttonsPanel>
-            <button id="removeButton"
-                    action="newDataGrid.remove"
-                    caption="Remove"/>
-            <button id="buttonOk"
-                    caption="msg://caption"
-                    invoke="onButtonOkClick"/>
-        </buttonsPanel>
+        <button id="buttonOk"
+                caption="msg://Ok"
+                invoke="onButtonOkClick"/>
     </layout>
 </window>

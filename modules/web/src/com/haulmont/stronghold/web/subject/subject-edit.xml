@@ -7,10 +7,13 @@
         messagesPack="com.haulmont.stronghold.web.subject">
     <dsContext>
         <datasource id="subjectDs"
+                    allowCommit="false"
                     class="com.haulmont.stronghold.entity.Subject"
                     view="subject-view">
             <collectionDatasource id="materialsMapDs"
                                   property="materialsMap"/>
+            <collectionDatasource id="materialDs"
+                                  property="material"/>
         </datasource>
         <collectionDatasource id="materialMapListDs"
                               class="com.haulmont.stronghold.entity.MaterialsMap"
@@ -22,7 +25,7 @@
     </dsContext>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="windowActions"
+    <layout expand="materialTable_1"
             spacing="true">
         <fieldGroup id="fieldGroup"
                     datasource="subjectDs">
@@ -35,10 +38,39 @@
                        property="teacher"/>
             </column>
         </fieldGroup>
+        <buttonsPanel>
+            <button id="button"
+                    action="materialTable_1.create"
+                    caption="msg://Create"
+                    description="Create"/>
+            <button id="buttonAdd"
+                    action="materialTable_1.add"
+                    caption="msg://Add"/>
+        </buttonsPanel>
+        <groupBox id="materialBox"
+                  caption="msg://com.haulmont.stronghold.entity/Subject.material"
+                  visible="false"/>
+        <table id="materialTable_1"
+               caption="msg://Materials"
+               height="298px"
+               width="666px">
+            <actions>
+                <action id="create"/>
+                <action id="add"/>
+            </actions>
+            <columns>
+                <column id="typeMaterial"
+                        caption="msg://Type material"/>
+                <column id="duration"
+                        caption="msg://Duration"/>
+            </columns>
+            <rows datasource="materialDs"/>
+        </table>
         <tokenList id="tokenList"
                    caption="msg://Materials map"
                    datasource="materialsMapDs"
                    height="163px"
+                   visible="false"
                    width="315px">
             <lookup lookup="true"
                     lookupScreen="stronghold$MaterialsMap.browse"
